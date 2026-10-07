@@ -1,0 +1,35 @@
+[
+  {
+    "id": "budget-calculator",
+    "tytul": "Budget Calculator (Spreadsheet + PDF Guide)",
+    "tytul_okladka": "Budget Calculator",
+    "podtytul": "A simple sheet that does the maths, so you can see where your money goes.",
+    "opis": "Roboczy opis pierwszego produktu (kalkulator). Podmień na finalny, gdy oferta na Etsy będzie gotowa.",
+    "cena_eur": "[CENA W EUR DO UZUPELNIENIA]",
+    "link_kup": "[LINK DO OFERTY NA ETSY DO UZUPELNIENIA]",
+    "platforma": "Etsy",
+    "status": "wkrotce",
+    "kolor_okladki": "#1F6F5C",
+    "kolor_akcent": "#E8FF3A",
+    "format": "Digital download, PDF + spreadsheet, instant access",
+    "strony": "[LICZBA STRON]",
+    "arkusze": "[LICZBA ARKUSZY]",
+    "druk": true,
+    "w_srodku": [
+      "[SPIS ROZDZIALOW / ARKUSZY DO UZUPELNIENIA]"
+    ],
+    "dla_kogo": [
+      "[DLA KOGO: np. chcesz prosty miesieczny przeglad pieniedzy]"
+    ],
+    "nie_dla": [
+      "[DLA KOGO NIE: np. potrzebujesz programu ksiegowego]"
+    ],
+    "probka": "[SCIEZKA DO PROBKI PDF, np. samples/budget-calculator-sample.pdf]",
+    "faq": [
+      ["Is this financial advice?", "No. It is a calculation tool. It does not tell you what to do with your money."],
+      ["How does buying work?", "You buy on Etsy and download the files from your Etsy account after payment. See the Help page for the steps."],
+      ["What do I need to open the files?", "Any PDF reader for the guide, and Excel, Google Sheets or LibreOffice for the spreadsheet."]
+    ],
+    "zastrzezenie": "finance"
+  }
+]

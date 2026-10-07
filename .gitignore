@@ -1,0 +1,13 @@
+# Systemowe
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Lokalne / robocze
+*.log
+/_zrzuty/
+/tmp/
+
+# Edytor
+.vscode/
+.idea/

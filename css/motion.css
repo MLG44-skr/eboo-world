@@ -1,0 +1,33 @@
+/* =========================================================================
+   Wariant A — "Ciemny + ruch"
+   Dokłada animacje do bazowego ciemnego motywu. Wszystko w granicach
+   prefers-reduced-motion i @supports, więc na starszych przeglądarkach
+   treść po prostu się pokazuje (bez ukrywania).
+   ========================================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Hero — wejście z dołu */
+  .hero h1        { animation: bza-up .6s ease both .05s; }
+  .hero__sub      { animation: bza-up .6s ease both .16s; }
+  .hero__akcje    { animation: bza-up .6s ease both .26s; }
+  .hero .nadtytul { animation: bza-up .6s ease both 0s; }
+
+  /* Okładki w wachlarzu — fade (bez ruszania finalnej rotacji/pozycji) */
+  .waclarz .cover { animation: bza-fade .7s ease both; }
+  .waclarz .cover:nth-child(1) { animation-delay: .20s; }
+  .waclarz .cover:nth-child(2) { animation-delay: .10s; }
+  .waclarz .cover:nth-child(3) { animation-delay: .30s; }
+
+  /* Pasek postępu w makiecie telefonu — napełnianie */
+  .telefon__pasek span { animation: bza-fill 1.4s cubic-bezier(.2,.8,.2,1) both .3s; }
+
+  /* Przyciski — delikatne uniesienie na hover jest już w bazie; tu puls akcentu */
+  .btn--akcent:focus-visible { animation: bza-pulse 1s ease infinite; }
+}
+
+@keyframes bza-up     { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes bza-fade   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bza-fill   { from { width: 0; } to { width: 62%; } }
+@keyframes bza-reveal { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes bza-pulse  { 0%,100% { box-shadow: 0 0 0 0 rgba(232,255,58,.5); } 50% { box-shadow: 0 0 0 8px rgba(232,255,58,0); } }
