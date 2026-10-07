@@ -543,3 +543,8 @@ input:focus-visible,
 .trust h3 { font-size: 1.15rem; }
 .ebook__tresc .badge { align-self: flex-start; margin-bottom: 10px; }
 .produkt__grid > * { min-width: 0; } @media (max-width: 520px) { .produkt__grid h1 { font-size: 1.9rem; } }
+
+/* Strony tekstowe: ta sama lewa krawędź co nagłówek i strona główna (zamiast wyśrodkowanej wąskiej kolumny) */
+.kontener.proza { max-width: var(--maks); }
+.kontener.proza > * { max-width: 760px; }
+.proza h2 { font-size: 1.6rem; }
