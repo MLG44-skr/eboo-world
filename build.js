@@ -35,7 +35,7 @@ const pages = [
   { f: "404.html", path: "404.html", title: "Page not found | Eboo World", desc: "Page not found.", noindex: true, hidden: true, baseHref: true }
 ];
 
-function meta(pg) {
+function meta(pg, base) {
   const url = SITE + "/" + pg.path, img = SITE + "/og-image.png";
   return [
     pg.baseHref ? `<base href="${SITE}/">` : "",
@@ -43,6 +43,7 @@ function meta(pg) {
     `<meta name="description" content="${h(pg.desc)}" />`,
     pg.noindex ? `<meta name="robots" content="noindex,follow" />` : "",
     `<meta name="theme-color" content="#0E0E0E" />`,
+    `<link rel="icon" type="image/svg+xml" href="${base}favicon.svg" />`,
     `<link rel="canonical" href="${h(url)}" />`,
     `<meta property="og:type" content="${pg.og || "website"}" /><meta property="og:locale" content="en_US" /><meta property="og:site_name" content="Eboo World" />`,
     `<meta property="og:title" content="${h(pg.title)}" /><meta property="og:description" content="${h(pg.desc)}" />`,
@@ -61,7 +62,7 @@ function inject(html, key, content) {
 function stamp(html, pg, base) {
   html = html.replace(/<html lang="en"[^>]*>/, `<html lang="en" data-v="${V}">`);
   html = html.replace(/((?:css|js)\/[\w.-]+\.(?:css|js))\?v=[^"']*/g, `$1?v=${V}`);
-  html = inject(html, "meta", "\n  " + meta(pg) + "\n  ");
+  html = inject(html, "meta", "\n  " + meta(pg, base) + "\n  ");
   html = inject(html, "header", R.header(base));
   html = inject(html, "footer", R.footer(base));
   return html;

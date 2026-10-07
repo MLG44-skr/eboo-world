@@ -19,8 +19,6 @@
   .waclarz .cover:nth-child(2) { animation-delay: .10s; }
   .waclarz .cover:nth-child(3) { animation-delay: .30s; }
 
-  /* Pasek postępu w makiecie telefonu — napełnianie */
-  .telefon__pasek span { animation: bza-fill 1.4s cubic-bezier(.2,.8,.2,1) both .3s; }
 
   /* Przyciski — delikatne uniesienie na hover jest już w bazie; tu puls akcentu */
   .btn--akcent:focus-visible { animation: bza-pulse 1s ease infinite; }
@@ -28,6 +26,4 @@
 
 @keyframes bza-up     { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes bza-fade   { from { opacity: 0; } to { opacity: 1; } }
-@keyframes bza-fill   { from { width: 0; } to { width: 62%; } }
-@keyframes bza-reveal { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
 @keyframes bza-pulse  { 0%,100% { box-shadow: 0 0 0 0 rgba(232,255,58,.5); } 50% { box-shadow: 0 0 0 8px rgba(232,255,58,0); } }
