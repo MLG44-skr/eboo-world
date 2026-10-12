@@ -1,5 +1,5 @@
 /* =========================================================================
-   EBOO WORLD — build (czysty Node, zero zależności):  node build.js
+   MINTTEXT.WORLD — build (czysty Node, zero zależności):  node build.js
    Robi: prerender katalogu i okładek (SEO), osobną stronę HTML dla każdego produktu,
    header/footer na każdej stronie, meta/canonical/OG, sitemap.xml, robots.txt oraz
    cache-busting (?v=<hash css+js+data>). Uruchom po KAŻDEJ zmianie w data/, js/ lub css/.
@@ -13,6 +13,7 @@ const rd = (f) => fs.readFileSync(path.join(ROOT, f), "utf8");
 const wr = (f, s) => { fs.mkdirSync(path.dirname(path.join(ROOT, f)), { recursive: true }); fs.writeFileSync(path.join(ROOT, f), s); };
 
 const SITE = (rd("js/config.js").match(/SITE_URL:\s*"([^"]+)"/) || [])[1].replace(/\/$/, "");
+const EMAIL = (rd("js/config.js").match(/CONTACT_EMAIL:\s*"([^"]+)"/) || [])[1];
 const products = JSON.parse(rd("data/products.json"));
 const shown = R.visible(products);
 
@@ -24,15 +25,15 @@ const V = hash.digest("hex").slice(0, 8);
 const h = R.h;
 const DESC = "Practical digital tools: spreadsheets, calculators and guides that save you time or money. Download instantly, checkout on Etsy.";
 const pages = [
-  { f: "index.html", path: "", title: "Eboo World: digital tools that save you time or money", desc: DESC, ld: { "@context": "https://schema.org", "@type": "Organization", name: "Eboo World", url: SITE + "/" } },
-  { f: "free-sheet.html", path: "free-sheet.html", title: "Free checklist | Eboo World", desc: "Get a free checklist PDF in exchange for your e-mail." },
-  { f: "help.html", path: "help.html", title: "Help: how to download your files from Etsy | Eboo World", desc: "How to download your purchase from Etsy, open the PDF and spreadsheet, and who to ask when something does not work." },
-  { f: "contact.html", path: "contact.html", title: "Contact | Eboo World", desc: "How to reach Eboo World." },
-  { f: "about.html", path: "about.html", title: "About | Eboo World", desc: "What Eboo World is and how its products are made.", noindex: true, hidden: true },
-  { f: "privacy.html", path: "privacy.html", title: "Privacy | Eboo World", desc: "Privacy policy.", noindex: true },
-  { f: "cookies.html", path: "cookies.html", title: "Cookies | Eboo World", desc: "Cookie information.", noindex: true },
-  { f: "terms.html", path: "terms.html", title: "Terms | Eboo World", desc: "Website terms.", noindex: true },
-  { f: "404.html", path: "404.html", title: "Page not found | Eboo World", desc: "Page not found.", noindex: true, hidden: true, baseHref: true }
+  { f: "index.html", path: "", title: "minttext.world: digital tools that save you time or money", desc: DESC, ld: { "@context": "https://schema.org", "@type": "Organization", name: "minttext.world", url: SITE + "/" } },
+  { f: "free-sheet.html", path: "free-sheet.html", title: "Free checklist | minttext.world", desc: "Get a free checklist PDF in exchange for your e-mail." },
+  { f: "help.html", path: "help.html", title: "Help: how to download your files from Etsy | minttext.world", desc: "How to download your purchase from Etsy, open the PDF and spreadsheet, and who to ask when something does not work." },
+  { f: "contact.html", path: "contact.html", title: "Contact | minttext.world", desc: "How to reach minttext.world." },
+  { f: "about.html", path: "about.html", title: "About | minttext.world", desc: "What minttext.world is and how its products are made.", noindex: true, hidden: true },
+  { f: "privacy.html", path: "privacy.html", title: "Privacy | minttext.world", desc: "Privacy policy.", noindex: true },
+  { f: "cookies.html", path: "cookies.html", title: "Cookies | minttext.world", desc: "Cookie information.", noindex: true },
+  { f: "terms.html", path: "terms.html", title: "Terms | minttext.world", desc: "Website terms.", noindex: true },
+  { f: "404.html", path: "404.html", title: "Page not found | minttext.world", desc: "Page not found.", noindex: true, hidden: true, baseHref: true }
 ];
 
 function meta(pg, base) {
@@ -45,7 +46,7 @@ function meta(pg, base) {
     `<meta name="theme-color" content="#0E0E0E" />`,
     `<link rel="icon" type="image/svg+xml" href="${base}favicon.svg" />`,
     `<link rel="canonical" href="${h(url)}" />`,
-    `<meta property="og:type" content="${pg.og || "website"}" /><meta property="og:locale" content="en_US" /><meta property="og:site_name" content="Eboo World" />`,
+    `<meta property="og:type" content="${pg.og || "website"}" /><meta property="og:locale" content="en_US" /><meta property="og:site_name" content="minttext.world" />`,
     `<meta property="og:title" content="${h(pg.title)}" /><meta property="og:description" content="${h(pg.desc)}" />`,
     `<meta property="og:url" content="${h(url)}" /><meta property="og:image" content="${img}" />`,
     `<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="${img}" />`,
@@ -63,6 +64,7 @@ function stamp(html, pg, base) {
   html = html.replace(/<html lang="en"[^>]*>/, `<html lang="en" data-v="${V}">`);
   html = html.replace(/((?:css|js)\/[\w.-]+\.(?:css|js))\?v=[^"']*/g, `$1?v=${V}`);
   html = inject(html, "meta", "\n  " + meta(pg, base) + "\n  ");
+  if (R.has(EMAIL)) html = html.replace(/(<a data-contact-email )href="[^"]*">[^<]*<\/a>/g, (m, a) => `${a}href="mailto:${EMAIL}">${EMAIL}</a>`);
   html = inject(html, "header", R.header(base));
   html = inject(html, "footer", R.footer(base));
   return html;
@@ -85,10 +87,10 @@ const tpl = rd("_templates/product.html");
 const keep = new Set();
 shown.forEach((p) => {
   const pg = {
-    title: p.tytul + " | Eboo World", desc: p.podtytul && R.has(p.podtytul) ? p.podtytul : DESC,
+    title: p.tytul + " | minttext.world", desc: p.podtytul && R.has(p.podtytul) ? p.podtytul : DESC,
     path: "product/" + p.id + ".html", og: "product"
   };
-  const ld = { "@context": "https://schema.org", "@type": "Product", name: p.tytul, description: pg.desc, brand: { "@type": "Brand", name: "Eboo World" } };
+  const ld = { "@context": "https://schema.org", "@type": "Product", name: p.tytul, description: pg.desc, brand: { "@type": "Brand", name: "minttext.world" } };
   if (R.isLive(p) && R.has(p.cena_eur)) ld.offers = { "@type": "Offer", price: String(p.cena_eur), priceCurrency: "EUR", url: p.link_kup, availability: "https://schema.org/InStock" };
   pg.ld = ld;
   let html = tpl.replace("{{ID}}", h(p.id));

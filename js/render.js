@@ -1,5 +1,5 @@
 /* =========================================================================
-   EBOO WORLD — wspólny render (przeglądarka + build.js). Jedno źródło prawdy:
+   MINTTEXT.WORLD — wspólny render (przeglądarka + build.js). Jedno źródło prawdy:
    te same funkcje robią prerender SEO (node build.js) i odświeżenie w przeglądarce.
    Wartości w [NAWIASACH] to placeholdery: nigdy nie trafiają na stronę.
    ========================================================================= */
@@ -51,7 +51,7 @@
     return '<svg class="cover cover-gen" viewBox="0 0 400 640" role="img" aria-label="Cover: ' + h(p.tytul) + '" xmlns="http://www.w3.org/2000/svg">' +
       '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="' + c + '"/><stop offset="1" stop-color="' + c + '" stop-opacity=".55"/></linearGradient></defs>' +
       '<rect width="400" height="640" fill="#0E0E0E"/><rect width="400" height="640" fill="url(#' + gid + ')"/>' +
-      '<text x="36" y="64" fill="#fff" fill-opacity=".85" font-size="19" font-weight="700" letter-spacing="5">EBOO WORLD</text>' +
+      '<text x="36" y="64" fill="#fff" fill-opacity=".85" font-size="19" font-weight="700" letter-spacing="5">MINTTEXT.WORLD</text>' +
       '<text x="36" y="250" fill="#fff" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="' + fs + '" font-weight="800" letter-spacing="-1.5">' + tspans + "</text>" +
       '<rect x="36" y="552" width="150" height="40" rx="20" fill="' + ak + '"/>' +
       '<text x="111" y="578" text-anchor="middle" fill="#0E0E0E" font-size="17" font-weight="700" letter-spacing="1.5">PDF + SHEET</text></svg>';
@@ -134,7 +134,7 @@
   /* Wspólne elementy strony (header, stopka) */
   function header(base) {
     base = base || "";
-    return '<div class="kontener header__row"><a class="logo" href="' + base + 'index.html" aria-label="Eboo World, home">EBOO WORLD<span class="kropka">.</span></a>' +
+    return '<div class="kontener header__row"><a class="logo" href="' + base + 'index.html" aria-label="minttext.world, home">MINTTEXT<span class="kropka">.</span>WORLD</a>' +
       '<button id="nav-toggle" class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰</button>' +
       '<nav id="nav" class="nav" aria-label="Main"><ul class="nav__links">' +
       '<li><a href="' + base + 'index.html#shop">Shop</a></li><li><a href="' + base + 'help.html">Help</a></li><li><a href="' + base + 'contact.html">Contact</a></li></ul>' +
@@ -143,7 +143,7 @@
   function footer(base) {
     base = base || "";
     return '<div class="kontener"><p class="mala" style="margin:0 0 14px">' + h(AI_NOTE) + " Purchases are handled by Etsy. Prices in EUR; Etsy may show them in your currency.</p>" +
-      '<div class="footer__row"><small>© <span id="rok">2026</span> Eboo World</small><ul class="footer__links" id="footer-links">' +
+      '<div class="footer__row"><small>© <span id="rok">2026</span> minttext.world</small><ul class="footer__links" id="footer-links">' +
       '<li><a href="' + base + 'help.html">Help</a></li><li><a href="' + base + 'contact.html">Contact</a></li><li><a href="' + base + 'privacy.html">Privacy</a></li>' +
       '<li><a href="' + base + 'cookies.html">Cookies</a></li><li><a href="' + base + 'terms.html">Terms</a></li></ul></div></div>';
   }

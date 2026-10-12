@@ -1,4 +1,4 @@
-# Eboo World — strona
+# minttext.world — strona
 
 Wizytówka marki z produktami cyfrowymi. **Strona nie sprzedaje**: płatność, plik, VAT i faktury robi Etsy.
 Kupujący idzie z karty produktu prosto do konkretnej oferty na Etsy ("Buy on Etsy").

@@ -1,5 +1,5 @@
 /* =========================================================================
-   EBOO WORLD — interakcje strony (vanilla JS). Treść jest już prerenderowana
+   MINTTEXT.WORLD — interakcje strony (vanilla JS). Treść jest już prerenderowana
    przez build.js; tu: odświeżenie z JSON, menu, newsletter, analityka, kontakt.
    ========================================================================= */
 (function () {
@@ -51,7 +51,7 @@
       '<div class="pole"><label for="nl-email">Your e-mail</label>' +
       '<input type="email" id="nl-email" name="email" autocomplete="email" placeholder="you@example.com" required></div>' +
       '<div class="zgoda"><input type="checkbox" id="nl-consent" name="consent" required>' +
-      '<label for="nl-consent">I agree to receive e-mails from Eboo World and I know I can unsubscribe at any time. <a href="' + BASE + 'privacy.html">Privacy</a></label></div>' +
+      '<label for="nl-consent">I agree to receive e-mails from minttext.world and I know I can unsubscribe at any time. <a href="' + BASE + 'privacy.html">Privacy</a></label></div>' +
       '<button type="submit" class="btn btn--ciemny">Subscribe</button></form>';
   }
 
